@@ -73,8 +73,9 @@ public class Aplicacion {
         Restaurante.cargarCombos();
     }
 
-    private static void mostrarIngredientes() {
+    private static void mostrarIngredientes() throws FileNotFoundException, IOException {
         System.out.println(" ====== LISTA DE INGREDIENTES ======");
+        Restaurante.cargarIngredientes();
     }
 
 }

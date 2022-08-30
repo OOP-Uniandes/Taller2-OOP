@@ -13,11 +13,13 @@ import java.util.ArrayList;
 
 
 public class Restaurante {
+	
     public ArrayList<Ingrediente> ingredientes=new ArrayList<Ingrediente>();
     public Pedido pedidoEnCurso;
     public ArrayList<Pedido> pedidos=new ArrayList<Pedido>();
     public static ArrayList<Combo> combos= new ArrayList<Combo>();
     public ArrayList<ProductoMenu> menuBase = new ArrayList<ProductoMenu>();
+    
     
     
     
@@ -49,6 +51,31 @@ public class Restaurante {
         for (Combo combo: listaDeCombos) {
             
             System.out.println(combo.mostrarCombo());
+          }
+        	}
+    
+    public static void cargarIngredientes() throws FileNotFoundException, IOException {
+    	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.txt";
+    	BufferedReader br = new BufferedReader(new FileReader(filename));
+    	String linea = br.readLine();
+    	
+    	ArrayList<Ingrediente> listaDeIngredientes = new ArrayList<Ingrediente>();
+    	
+    	while (linea != null) {
+            String[] partes = linea.split(";");
+            String nombre = partes[0];
+            String costoAdicional = partes[1];
+            int costoAdicionalI = Integer.parseInt(costoAdicional);
+
+            Ingrediente ingrediente = new Ingrediente(nombre,costoAdicionalI);
+            listaDeIngredientes.add(ingrediente);
+            linea = br.readLine(); 
+        }
+        br.close();
+        
+        for (Ingrediente ingrediente: listaDeIngredientes) {
+            
+            System.out.println(ingrediente.mostrarIngrediente());
           }
         	}
         }

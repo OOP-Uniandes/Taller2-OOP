@@ -19,5 +19,9 @@ public class Ingrediente {
 	public void setCostoAdicional(int costoAdicional) {
 		this.costoAdicional = costoAdicional;
 	}
+	public String mostrarIngrediente() {
+        String resultado ="Nombre: " + this.nombre + "      Descuento: " + this.costoAdicional;
+        return resultado;
+	}
 
 }
