@@ -20,7 +20,7 @@ public class Ingrediente {
 		this.costoAdicional = costoAdicional;
 	}
 	public String mostrarIngrediente() {
-        String resultado ="Nombre: " + this.nombre + "      Descuento: " + this.costoAdicional;
+        String resultado ="Nombre: " + this.nombre + "      Costo Adicional: " + this.costoAdicional;
         return resultado;
 	}
 
