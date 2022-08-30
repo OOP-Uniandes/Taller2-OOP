@@ -66,7 +66,7 @@ public class Aplicacion {
 
     }
 
-	public String input(String mensaje)
+	public static String input(String mensaje)
 	{
 		try
 		{
@@ -89,27 +89,30 @@ public class Aplicacion {
         System.out.println("");
         System.out.println("1. Ver lista de Combos");
         System.out.println("2. Ver lista de Ingredientes");
+        System.out.println("3. Ver lista de Productos");
         System.out.println("");
         int opcionMenu = Integer.parseInt(input("Por favor seleccione una opción: "));
 
 
         if (opcionMenu == 1) {
-            mostrarCombos();
+        	System.out.println(" ====== LISTA DE COMBOS ======");
+            restaurante.mostrarCombos();
         }
-            else if (opcionMenu == 2) {
-            mostrarIngredientes();
+        else if (opcionMenu == 2) {
+        	System.out.println(" ====== LISTA DE INGREDIENTES ======");
+            restaurante.mostrarIngredientes();
+        }
+        else if(opcionMenu == 3) {
+        	System.out.println(" ====== LISTA DE PRODUCTOS ======");
+            restaurante.mostrarMenu();
         }
 
     }
 
-    private void mostrarCombos() throws FileNotFoundException, IOException {
-        System.out.println(" ====== LISTA DE COMBOS ======");
-        restaurante.mostrarCombos();
-    }
+ 
 
     private void mostrarIngredientes() throws FileNotFoundException, IOException {
-        System.out.println(" ====== LISTA DE INGREDIENTES ======");
-        restaurante.mostrarIngredientes();
+        
     }
 
 }

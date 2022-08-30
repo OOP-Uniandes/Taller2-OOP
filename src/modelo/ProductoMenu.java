@@ -30,7 +30,7 @@ public class ProductoMenu implements Producto {
 	@Override
 	public String mostrarProducto() {
 		// TODO Auto-generated method stub
-		return this.nombre + this.precioBase;
+		return "Nombre: " + this.nombre + " Precio: " + this.precioBase;
 	}
 
 }

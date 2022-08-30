@@ -18,6 +18,7 @@ public class Restaurante {
 		try {
 			this.cargarCombos();
 			this.cargarIngredientes();
+			this.cargarProductos();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -25,7 +26,6 @@ public class Restaurante {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	public Pedido getPedidoEnCurso() {
@@ -89,7 +89,7 @@ public class Restaurante {
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String linea = br.readLine();
     	
-    	ArrayList<Ingrediente> listaDeIngredientes = new ArrayList<Ingrediente>();
+    	
     	
     	while (linea != null) {
             String[] partes = linea.split(";");
@@ -98,7 +98,7 @@ public class Restaurante {
             int costoAdicionalI = Integer.parseInt(costoAdicional);
 
             Ingrediente ingrediente = new Ingrediente(nombre,costoAdicionalI);
-            listaDeIngredientes.add(ingrediente);
+            
             this.ingredientes.add(ingrediente);
             linea = br.readLine(); 
         }
@@ -106,7 +106,29 @@ public class Restaurante {
         
       
         	}
-        }
+        
+	
+	public void cargarProductos() throws FileNotFoundException, IOException {
+		String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/menu.txt";
+		BufferedReader br = new BufferedReader(new FileReader(filename));
+		String linea = br.readLine();
+		
+		
+		while (linea != null) {
+	        String[] partes = linea.split(";");
+	        String nombre = partes[0];
+	        String costo = partes[1];
+	        int costoNum = Integer.parseInt(costo);
+	
+	        ProductoMenu producto = new ProductoMenu(nombre,costoNum);
+	        this.menuBase.add(producto);
+	        linea = br.readLine(); 
+	    }
+	    br.close();
+	    
+	  
+	    	}
+	    }
 
     
 
