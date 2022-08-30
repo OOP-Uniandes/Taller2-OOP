@@ -10,29 +10,64 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.io.BufferedReader;
 
 public class Restaurante {
 	
-    public ArrayList<Ingrediente> ingredientes=new ArrayList<Ingrediente>();
+    public Restaurante() {
+		try {
+			this.cargarCombos();
+			this.cargarIngredientes();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public Pedido getPedidoEnCurso() {
+		return pedidoEnCurso;
+	}
+	public void setPedidoEnCurso(Pedido pedidoEnCurso) {
+		this.pedidoEnCurso = pedidoEnCurso;
+	}
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
+	}
+	public void setPedidos(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public ArrayList<Ingrediente> ingredientes=new ArrayList<Ingrediente>();
     public Pedido pedidoEnCurso;
     public ArrayList<Pedido> pedidos=new ArrayList<Pedido>();
     public static ArrayList<Combo> combos= new ArrayList<Combo>();
     public ArrayList<ProductoMenu> menuBase = new ArrayList<ProductoMenu>();
     
     
+    public void mostrarIngredientes() {
+    	for (Ingrediente ingrediente: this.ingredientes) {
+			System.out.println(ingrediente.mostrarIngrediente());
+		}
+    }
+    public void mostrarMenu() {
+    	for (ProductoMenu menuItem: this.menuBase) {
+			System.out.println(menuItem.mostrarProducto());
+		}
+    }
+    public void mostrarCombos() {
+		for (Combo combo: this.combos) {
+			System.out.println(combo.mostrarCombo());
+		}
+    }
     
-    
-    public static void cargarCombos() throws FileNotFoundException, IOException  {
-        String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\combos.txt";
+    public void cargarCombos() throws FileNotFoundException, IOException  {
+        String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/combos.txt";
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String linea = br.readLine();
-
-        ArrayList<Combo> listaDeCombos = new ArrayList<Combo>();
-
-
-
-
 
         while (linea != null) {
             String[] partes = linea.split(";");
@@ -40,22 +75,17 @@ public class Restaurante {
             String descuentoCombo = partes[1].replaceAll("[%]", "");
             Double descuentoComboF = Double.parseDouble(descuentoCombo);
             
-            System.out.println(nombre);
-            System.out.println(descuentoComboF);
+
             Combo combo = new Combo(nombre,descuentoComboF);
-            listaDeCombos.add(combo);
+            this.combos.add(combo);
             linea = br.readLine(); 
         }
         br.close();
         
-        for (Combo combo: listaDeCombos) {
-            
-            System.out.println(combo.mostrarCombo());
-          }
         	}
     
-    public static void cargarIngredientes() throws FileNotFoundException, IOException {
-    	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.txt";
+    public void cargarIngredientes() throws FileNotFoundException, IOException {
+    	String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/ingredientes.txt";
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String linea = br.readLine();
     	
@@ -69,14 +99,12 @@ public class Restaurante {
 
             Ingrediente ingrediente = new Ingrediente(nombre,costoAdicionalI);
             listaDeIngredientes.add(ingrediente);
+            this.ingredientes.add(ingrediente);
             linea = br.readLine(); 
         }
         br.close();
         
-        for (Ingrediente ingrediente: listaDeIngredientes) {
-            
-            System.out.println(ingrediente.mostrarIngrediente());
-          }
+      
         	}
         }
 

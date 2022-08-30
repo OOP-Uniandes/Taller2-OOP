@@ -46,5 +46,12 @@ public class Combo implements Producto{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public String mostrarProducto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

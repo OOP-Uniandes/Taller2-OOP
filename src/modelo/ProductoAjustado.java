@@ -28,5 +28,11 @@ public class ProductoAjustado implements Producto{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String mostrarProducto() {
+		// TODO Auto-generated method stub
+		return String.valueOf(this.base.getPrecio()) + this.getPrecio();
+	}
 
 }

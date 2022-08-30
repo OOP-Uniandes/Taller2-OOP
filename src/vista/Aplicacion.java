@@ -3,15 +3,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import src.controlador.Restaurante;
+import src.modelo.Pedido;
 
 public class Aplicacion {
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-    
-        // Mostrar menú:
-        mostrarOpciones();
+	
+	Restaurante restaurante = new Restaurante();
+	
+    public void main() throws FileNotFoundException, IOException {
+    	
+       consola();
     }
+    
     // Mostrar menú
-    private static void mostrarOpciones() throws FileNotFoundException, IOException {
+    public void consola() throws FileNotFoundException, IOException {
         System.out.println(" ");
         System.out.println(" ");
         System.out.println(" ");
@@ -31,7 +35,11 @@ public class Aplicacion {
         System.out.println("Por favor selecciona una opción");
         int opcion_seleccionada = sc.nextInt();
 			    if (opcion_seleccionada == 1) {
-				System.out.println("En Desarrollo");
+			    // id
+			    // nombre cliente
+			    // direccion cliente
+			    	
+				Pedido pedidoNnuevo = new Pedido(opcion_seleccionada, null, null);
             }
 				else if (opcion_seleccionada == 2) {
                 System.out.println("En Desarrollo");
@@ -45,7 +53,7 @@ public class Aplicacion {
 			sc.close();
     }
 
-    private static void mostrarMenu() throws FileNotFoundException, IOException {
+    private void mostrarMenu() throws FileNotFoundException, IOException {
         System.out.println(" ====== MENÚ DEL RESTAURANTE ======");
         
         System.out.println("");
@@ -68,14 +76,15 @@ public class Aplicacion {
         sc.close();
     }
 
-    private static void mostrarCombos() throws FileNotFoundException, IOException {
+    private void mostrarCombos() throws FileNotFoundException, IOException {
         System.out.println(" ====== LISTA DE COMBOS ======");
-        Restaurante.cargarCombos();
+        restaurante.mostrarCombos();
     }
 
-    private static void mostrarIngredientes() throws FileNotFoundException, IOException {
+    private void mostrarIngredientes() throws FileNotFoundException, IOException {
         System.out.println(" ====== LISTA DE INGREDIENTES ======");
-        Restaurante.cargarIngredientes();
+        restaurante.mostrarIngredientes();
     }
 
 }
+

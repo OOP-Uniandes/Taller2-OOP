@@ -8,7 +8,7 @@ public class ProductoMenu implements Producto {
 		this.nombre=nombre;
 		this.precioBase=precioBase;
 	}
-
+	
 	@Override
 	public int getPrecio() {
 		// TODO Auto-generated method stub
@@ -25,6 +25,12 @@ public class ProductoMenu implements Producto {
 	public String generarTextoFactura() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String mostrarProducto() {
+		// TODO Auto-generated method stub
+		return this.nombre + this.precioBase;
 	}
 
 }
