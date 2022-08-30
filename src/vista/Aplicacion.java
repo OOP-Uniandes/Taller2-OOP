@@ -84,25 +84,22 @@ public class Aplicacion {
 
 	private void mostrarMenu() throws FileNotFoundException, IOException {
         System.out.println(" ====== MENÚ DEL RESTAURANTE ======");
-        
         System.out.println("");
         System.out.println("Por favor elige una de las siguientes opciones");
         System.out.println("");
         System.out.println("1. Ver lista de Combos");
         System.out.println("2. Ver lista de Ingredientes");
         System.out.println("");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Por favor selecciona una opción");
-        int OpcionMenu = sc.nextInt();
+        int opcionMenu = Integer.parseInt(input("Por favor seleccione una opción: "));
 
-        if (OpcionMenu == 1) {
+
+        if (opcionMenu == 1) {
             mostrarCombos();
         }
-            else if (OpcionMenu == 2) {
+            else if (opcionMenu == 2) {
             mostrarIngredientes();
         }
 
-        sc.close();
     }
 
     private void mostrarCombos() throws FileNotFoundException, IOException {
