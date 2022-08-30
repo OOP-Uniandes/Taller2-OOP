@@ -1,13 +1,17 @@
 package src.vista;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+import src.controlador.Restaurante;
+
 public class Aplicacion {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
     
         // Mostrar menú:
         mostrarOpciones();
     }
     // Mostrar menú
-    private static void mostrarOpciones() {
+    private static void mostrarOpciones() throws FileNotFoundException, IOException {
         System.out.println(" ");
         System.out.println(" ");
         System.out.println(" ");
@@ -41,7 +45,7 @@ public class Aplicacion {
 			sc.close();
     }
 
-    private static void mostrarMenu() {
+    private static void mostrarMenu() throws FileNotFoundException, IOException {
         System.out.println(" ====== MENÚ DEL RESTAURANTE ======");
         
         System.out.println("");
@@ -64,8 +68,9 @@ public class Aplicacion {
         sc.close();
     }
 
-    private static void mostrarCombos() {
+    private static void mostrarCombos() throws FileNotFoundException, IOException {
         System.out.println(" ====== LISTA DE COMBOS ======");
+        Restaurante.cargarCombos();
     }
 
     private static void mostrarIngredientes() {
