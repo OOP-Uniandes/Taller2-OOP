@@ -1,6 +1,8 @@
 package src.vista;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import src.controlador.Restaurante;
 import src.modelo.Pedido;
@@ -32,19 +34,16 @@ public class Aplicacion {
             System.out.println("3. Obtener Pedido en Curso");
             System.out.println(" ");
             System.out.println("4. Revisa nuestro menú");
-            
-
             System.out.println();
 
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Por favor selecciona una opción");
-            int opcion_seleccionada = sc.nextInt();
-    			    if (opcion_seleccionada == 1) {
-    			    // id
-    			    // nombre cliente
-    			    // direccion cliente
-    			    	
-    				Pedido pedidoNnuevo = new Pedido(opcion_seleccionada, null, null);
+            int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
+            
+			    if (opcion_seleccionada == 1) {
+			    // id
+			    // nombre cliente
+			    // direccion cliente
+			    	
+				Pedido pedidoNnuevo = new Pedido(opcion_seleccionada, null, null);
                 }
     				else if (opcion_seleccionada == 2) {
                     System.out.println("En Desarrollo");
@@ -61,13 +60,29 @@ public class Aplicacion {
 					
 					System.out.println("Hasta luego!");
 				}
-    			sc.close();
+ 
     	}
     	
 
     }
 
-    private void mostrarMenu() throws FileNotFoundException, IOException {
+	public String input(String mensaje)
+	{
+		try
+		{
+			System.out.print(mensaje + ": ");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			return reader.readLine();
+		}
+		catch (IOException e)
+		{
+			System.out.println("Error leyendo de la consola");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private void mostrarMenu() throws FileNotFoundException, IOException {
         System.out.println(" ====== MENÚ DEL RESTAURANTE ======");
         
         System.out.println("");
