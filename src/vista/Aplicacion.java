@@ -16,41 +16,55 @@ public class Aplicacion {
     
     // Mostrar menú
     public void consola() throws FileNotFoundException, IOException {
-        System.out.println(" ");
-        System.out.println(" ");
-        System.out.println(" ");
-        System.out.println("¡Bienvenid@ al Restaurante POOAndes");
-        System.out.println(" ");
-        System.out.println(" ");
-        System.out.println("1. Inicia un nuevo pedido");
-        System.out.println("2. Cerrar y guardar pedido");
-        System.out.println("3. Obtener Pedido en Curso");
-        System.out.println(" ");
-        System.out.println("4. Revisa nuestro menú");
-        
+    	
+    	
+    	boolean continuar = true;
+    	
+    	while(continuar) {
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("¡Bienvenid@ al Restaurante POOAndes");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("1. Inicia un nuevo pedido");
+            System.out.println("2. Cerrar y guardar pedido");
+            System.out.println("3. Obtener Pedido en Curso");
+            System.out.println(" ");
+            System.out.println("4. Revisa nuestro menú");
+            
 
-        System.out.println();
+            System.out.println();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Por favor selecciona una opción");
-        int opcion_seleccionada = sc.nextInt();
-			    if (opcion_seleccionada == 1) {
-			    // id
-			    // nombre cliente
-			    // direccion cliente
-			    	
-				Pedido pedidoNnuevo = new Pedido(opcion_seleccionada, null, null);
-            }
-				else if (opcion_seleccionada == 2) {
-                System.out.println("En Desarrollo");
-            }
-				else if (opcion_seleccionada == 3) {
-                System.out.println("En Desarrollo");
-            }
-				else if (opcion_seleccionada == 4) {
-                mostrarMenu();
-            }
-			sc.close();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Por favor selecciona una opción");
+            int opcion_seleccionada = sc.nextInt();
+    			    if (opcion_seleccionada == 1) {
+    			    // id
+    			    // nombre cliente
+    			    // direccion cliente
+    			    	
+    				Pedido pedidoNnuevo = new Pedido(opcion_seleccionada, null, null);
+                }
+    				else if (opcion_seleccionada == 2) {
+                    System.out.println("En Desarrollo");
+                }
+    				else if (opcion_seleccionada == 3) {
+                    System.out.println("En Desarrollo");
+                }
+    				else if (opcion_seleccionada == 4) {
+                    mostrarMenu();
+                }
+				else if (opcion_seleccionada == 0) {
+					
+					continuar = false;
+					
+					System.out.println("Hasta luego!");
+				}
+    			sc.close();
+    	}
+    	
+
     }
 
     private void mostrarMenu() throws FileNotFoundException, IOException {
