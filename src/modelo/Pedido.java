@@ -1,21 +1,23 @@
 package src.modelo;
 
+import java.util.ArrayList;
+
 public class Pedido {
+	
 	public Pedido(int idPedido, String nombreCliente, String direccionCliente) {
 		this.idPedido = idPedido;
 		this.nombreCliente = nombreCliente;
 		this.direccionCliente = direccionCliente;
 	}
-	private static int numeroPedidos=0;
+	
+	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	private int idPedido;
 	private String nombreCliente;
 	private String direccionCliente;
-	public static int getNumeroPedidos() {
-		return numeroPedidos;
-	}
-	public static void setNumeroPedidos(int numeroPedidos) {
-		Pedido.numeroPedidos = numeroPedidos;
-	}
+	
+	public void addProducto(Producto producto) {
+		this.productos.add(producto);
+		}
 	public int getIdPedido() {
 		return idPedido;
 	}

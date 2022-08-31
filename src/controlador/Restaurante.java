@@ -37,8 +37,11 @@ public class Restaurante {
 	public ArrayList<Pedido> getPedidos() {
 		return pedidos;
 	}
-	public void setPedidos(ArrayList<Pedido> pedidos) {
-		this.pedidos = pedidos;
+	public void addPedido(Pedido pedido) {
+		this.pedidos.add(pedido);
+	}
+	public void incrementIdc() {
+		this.idc++;
 	}
 
 	public ArrayList<Ingrediente> ingredientes=new ArrayList<Ingrediente>();
@@ -46,20 +49,23 @@ public class Restaurante {
     public ArrayList<Pedido> pedidos=new ArrayList<Pedido>();
     public static ArrayList<Combo> combos= new ArrayList<Combo>();
     public ArrayList<ProductoMenu> menuBase = new ArrayList<ProductoMenu>();
-    
+    public int idc = 1;
     
     public void mostrarIngredientes() {
     	for (Ingrediente ingrediente: this.ingredientes) {
+    		
 			System.out.println(ingrediente.mostrarIngrediente());
 		}
     }
     public void mostrarMenu() {
     	for (ProductoMenu menuItem: this.menuBase) {
+    		System.out.println('P' + String.valueOf(this.menuBase.indexOf(menuItem)));
 			System.out.println(menuItem.mostrarProducto());
 		}
     }
     public void mostrarCombos() {
 		for (Combo combo: this.combos) {
+			System.out.println('C' + String.valueOf(this.combos.indexOf(combo)));
 			System.out.println(combo.mostrarCombo());
 		}
     }
@@ -74,15 +80,13 @@ public class Restaurante {
             String nombre = partes[0];
             String descuentoCombo = partes[1].replaceAll("[%]", "");
             Double descuentoComboF = Double.parseDouble(descuentoCombo);
-            
-
             Combo combo = new Combo(nombre,descuentoComboF);
             this.combos.add(combo);
             linea = br.readLine(); 
         }
         br.close();
         
-        	}
+    }
     
     public void cargarIngredientes() throws FileNotFoundException, IOException {
     	String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/ingredientes.txt";
