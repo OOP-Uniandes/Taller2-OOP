@@ -2,15 +2,20 @@ package src.modelo;
 
 import java.util.ArrayList;
 
+import src.controlador.Restaurante;
+import src.vista.Aplicacion;
+
 public class Combo implements Producto{
-    public Combo(String nombreCombo, Double descuento) {
+    public Combo(String nombreCombo, Double descuento, int precioNormal) {
 		this.nombreCombo = nombreCombo;
 		this.descuento = descuento;
+		this.precioNormal = precioNormal;
 	}
 
     public ArrayList<ProductoMenu> itemsCombo=new ArrayList<ProductoMenu>();
 	private String nombreCombo;
     private Double descuento;
+    public int precioNormal;
 
 
     public String mostrarCombo(){
@@ -30,21 +35,22 @@ public class Combo implements Producto{
 
 
 	@Override
-	public int getPrecio() {
+	public double getPrecio() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.precioNormal * ((descuento/100)+1);
 	}
 
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.nombreCombo;
 	}
 
 
 	@Override
 	public String generarTextoFactura() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Producto: " + this.nombreCombo + " Precio: " +String.valueOf(this.getPrecio()) ;
+		
 	}
 
 

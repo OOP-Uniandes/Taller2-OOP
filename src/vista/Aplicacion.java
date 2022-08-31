@@ -16,7 +16,6 @@ public class Aplicacion {
        consola();
     }
     
-    // Mostrar menú
     public void consola() throws FileNotFoundException, IOException {
     	
     	
@@ -33,25 +32,36 @@ public class Aplicacion {
                 int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción: "));
                 
                 if (opcion_seleccionada == 1) {
+                	/*
                 	System.out.println(" ====== LISTA DE COMBOS ======");
                     restaurante.mostrarCombos();
 
                     System.out.println(" ====== LISTA DE PRODUCTOS ======");
                     restaurante.mostrarMenu();
-
-                    System.out.println("Producto que desea agregar: ");
-                    String opcion_seleccionada_2 = input("Por favor seleccione una opción: ");
-                    System.out.println(opcion_seleccionada_2);
+					*/
+                    String opcion_seleccionada_2 = input("Producto que desea agregar: ");
                     if(opcion_seleccionada_2.charAt(0) == 'P') {
                     	// Producto
                     	int producto_seleccionado = Integer.valueOf(opcion_seleccionada_2.substring(1,opcion_seleccionada_2.length()));
+                    	restaurante.pedidoEnCurso.addProducto(restaurante.retornarProductoPorIndice(producto_seleccionado));
+                        System.out.println("Producto anadido !\n\n");
                     }
                     if(opcion_seleccionada_2.charAt(0) == 'C') {
                     	// Producto
                     	int combo_seleccionado = Integer.valueOf(opcion_seleccionada_2.substring(1,opcion_seleccionada_2.length()));
+                    	restaurante.pedidoEnCurso.addProducto(restaurante.retornarComboPorIndice(combo_seleccionado));
+                    	System.out.println("Combo anadido ! \n\n");
                     }
                     
+                } 
+                else if (opcion_seleccionada == 2) {
+                	pedidoInicializado=false;
+                	restaurante.pedidoEnCurso.generarFactura(restaurante.idc);
+                	restaurante.pedidos.add(restaurante.pedidoEnCurso);
+                	
                 }
+               
+                
     		} else {
     			
                 System.out.println(" ");
@@ -61,10 +71,9 @@ public class Aplicacion {
                 System.out.println(" ");
                 System.out.println(" ");
                 System.out.println("1. Inicia un nuevo pedido");
-                System.out.println("2. Cerrar y guardar pedido");
-                System.out.println("3. Obtener Pedido en Curso");
+                System.out.println("2. Buscar pedido");
+                System.out.println("3. Revisa nuestro menú");
                 System.out.println(" ");
-                System.out.println("4. Revisa nuestro menú");
                 System.out.println();
 
                 int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción: "));
@@ -79,7 +88,19 @@ public class Aplicacion {
     			
                 }
     				else if (opcion_seleccionada == 2) {
-                    System.out.println("En Desarrollo");
+    				int id_pedido_buscar = Integer.parseInt(input("ID pedido: "));
+    				id_pedido_buscar += 1;
+    				boolean found = false;
+    				for (Pedido pedido: restaurante.pedidos) {
+    					System.out.println(pedido.getIdPedido());
+    					if (pedido.getIdPedido() == id_pedido_buscar) {
+    						System.out.println(pedido.mostrarInfo());
+    						found = true;
+    					}
+    				}
+    				if (found == false) {
+    					System.out.println("No se ha encontrado un pedido con este id ! :( \n\n\n");
+    				}
                 }
     				else if (opcion_seleccionada == 3) {
                     System.out.println("En Desarrollo");

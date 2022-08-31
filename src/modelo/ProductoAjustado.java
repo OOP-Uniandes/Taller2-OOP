@@ -12,7 +12,7 @@ public class ProductoAjustado implements Producto{
 		this.base=base;
 	}
 	@Override
-	public int getPrecio() {
+	public double getPrecio() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

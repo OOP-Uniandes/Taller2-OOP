@@ -16,9 +16,9 @@ public class Restaurante {
 	
     public Restaurante() {
 		try {
+			this.cargarProductos();
 			this.cargarCombos();
 			this.cargarIngredientes();
-			this.cargarProductos();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +49,9 @@ public class Restaurante {
     public ArrayList<Pedido> pedidos=new ArrayList<Pedido>();
     public static ArrayList<Combo> combos= new ArrayList<Combo>();
     public ArrayList<ProductoMenu> menuBase = new ArrayList<ProductoMenu>();
-    public int idc = 1;
+    public int idc = 0;
+    
+    
     
     public void mostrarIngredientes() {
     	for (Ingrediente ingrediente: this.ingredientes) {
@@ -70,6 +72,23 @@ public class Restaurante {
 		}
     }
     
+    public Combo retornarComboPorIndice(int comboIndex) {
+    	return this.combos.get(comboIndex);
+    }
+    public ProductoMenu retornarProductoPorIndice(int productIndex) {
+    	return this.menuBase.get(productIndex);
+    }
+    
+    private int darPrecioCombo(String nombreCombo) {
+    	
+    	for(ProductoMenu menuItem: this.menuBase) {
+    		if (nombreCombo.contains(menuItem.getNombre())) {
+    			return (int)menuItem.getPrecio();
+    		}
+    	}
+    	return 0;
+    }
+    
     public void cargarCombos() throws FileNotFoundException, IOException  {
         String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/combos.txt";
         BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -80,7 +99,8 @@ public class Restaurante {
             String nombre = partes[0];
             String descuentoCombo = partes[1].replaceAll("[%]", "");
             Double descuentoComboF = Double.parseDouble(descuentoCombo);
-            Combo combo = new Combo(nombre,descuentoComboF);
+            int precioCombo = darPrecioCombo(nombre);
+            Combo combo = new Combo(nombre,descuentoComboF,precioCombo);
             this.combos.add(combo);
             linea = br.readLine(); 
         }
