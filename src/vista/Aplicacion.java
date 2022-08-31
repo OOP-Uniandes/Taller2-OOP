@@ -89,10 +89,10 @@ public class Aplicacion {
                 }
     				else if (opcion_seleccionada == 2) {
     				int id_pedido_buscar = Integer.parseInt(input("ID pedido: "));
-    				id_pedido_buscar += 1;
+    				id_pedido_buscar -= 1;
     				boolean found = false;
     				for (Pedido pedido: restaurante.pedidos) {
-    					System.out.println(pedido.getIdPedido());
+    					
     					if (pedido.getIdPedido() == id_pedido_buscar) {
     						System.out.println(pedido.mostrarInfo());
     						found = true;
@@ -103,11 +103,9 @@ public class Aplicacion {
     				}
                 }
     				else if (opcion_seleccionada == 3) {
-                    System.out.println("En Desarrollo");
+    					mostrarMenu();
                 }
-    				else if (opcion_seleccionada == 4) {
-                    mostrarMenu();
-                }
+    				
     			else if (opcion_seleccionada == 0) {
     				
     				continuar = false;

@@ -48,7 +48,7 @@ public class Pedido {
 	}
 	
 	public String mostrarInfo() {
-		String info = "Factura del pedido " + String.valueOf(this.idPedido) + "\n" + "=====================" + "\n" +"Cliente:   " + this.nombreCliente + "\n" + "Direccion: " + this.direccionCliente + "\n"+ "=====================" + "\n" ;
+		String info = "Factura del pedido " + String.valueOf(this.idPedido + 1) + "\n" + "=====================" + "\n" +"Cliente:   " + this.nombreCliente + "\n" + "Direccion: " + this.direccionCliente + "\n"+ "=====================" + "\n" ;
 		for (Producto producto: this.productos) {
 			String elem = producto.generarTextoFactura();
 			info = info + elem + "\n";
