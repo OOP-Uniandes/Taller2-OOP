@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 import src.controlador.Restaurante;
+import src.modelo.Combo;
+import src.modelo.Ingrediente;
 import src.modelo.Pedido;
+import src.modelo.Producto;
+import src.modelo.ProductoAjustado;
+import src.modelo.ProductoMenu;
 
 public class Aplicacion {
 	
@@ -26,7 +31,8 @@ public class Aplicacion {
     		
     		if(pedidoInicializado == true) {
     			System.out.println("1. Agregar producto");
-                System.out.println("2. Cerrar y guardar factura");
+    			System.out.println("2. Agregar producto modificado");
+                System.out.println("3. Cerrar y guardar factura");
                 System.out.println(" ");
                 
                 int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción: "));
@@ -53,8 +59,62 @@ public class Aplicacion {
                     	System.out.println("Combo anadido ! \n\n");
                     }
                     
-                } 
-                else if (opcion_seleccionada == 2) {
+                }else if(opcion_seleccionada == 2) {
+                	String opcion_seleccionada_2 = input("Producto base: ");
+                	
+                	ProductoMenu theProduct = restaurante.retornarProductoPorIndice(1);
+                	
+                	if(opcion_seleccionada_2.charAt(0) == 'P') {
+
+                    	int producto_seleccionado = Integer.valueOf(opcion_seleccionada_2.substring(1,opcion_seleccionada_2.length()));
+                    	theProduct = restaurante.retornarProductoPorIndice(producto_seleccionado);
+                        System.out.println("Producto anadido !\n\n");
+                    }
+                	
+                    if(opcion_seleccionada_2.charAt(0) == 'C') {
+
+                    	int producto_seleccionado = Integer.valueOf(opcion_seleccionada_2.substring(1,opcion_seleccionada_2.length()));
+                    	theProduct = restaurante.retornarProductoPorIndice(producto_seleccionado);
+                    	System.out.println("Combo anadido ! \n\n");
+                    }
+                    
+                    boolean editMode = true;
+                    ProductoAjustado prod = new ProductoAjustado(theProduct);
+                    while (editMode) {
+                    	
+	                	 System.out.println("1. Anadir ingrediente");
+	                     System.out.println("2. Quitar ingrediente");
+	                     System.out.println("3. Guardar y salir");
+	                     int opcion_seleccionada_3 = Integer.parseInt(input("Por favor seleccione una opción: "));
+	                     if(opcion_seleccionada_3 == 1) {
+
+	                     	
+	                    	 int ingIndex = Integer.parseInt(input("# Ingrediente a anadir: "));
+	                    	 
+	                    	 Ingrediente ingAnadir = restaurante.retornarIngredientePorIndice(ingIndex);
+	                    	 
+	                    	 prod.addAgregado(ingAnadir);
+	                    	 
+	                     }
+	                     if(opcion_seleccionada_3 == 2) {
+
+		                     	
+	                    	 int ingIndex = Integer.parseInt(input("# Ingrediente a eliminar: "));
+	                    	 Ingrediente ingQuitar = restaurante.retornarIngredientePorIndice(ingIndex);
+	                    	 prod.addEliminado(ingQuitar);
+	                     }
+	                     if(opcion_seleccionada_3 == 3) {
+
+		                     
+							
+	                    	 editMode = false;
+	                    	 restaurante.pedidoEnCurso.addProducto(prod);
+	                    	 
+	                     }
+	                     
+                    }
+                }
+                else if (opcion_seleccionada == 3) {
                 	pedidoInicializado=false;
                 	restaurante.pedidoEnCurso.generarFactura(restaurante.idc);
                 	restaurante.pedidos.add(restaurante.pedidoEnCurso);
@@ -74,6 +134,10 @@ public class Aplicacion {
                 System.out.println("2. Buscar pedido");
                 System.out.println("3. Revisa nuestro menú");
                 System.out.println("4. Verificar pedidos repetidos");
+                System.out.println(" ");
+                System.out.println(" ");
+                System.out.println("Por favor utilice unicamente los codigos de productos dados en el menu");
+                System.out.println(" ");
                 System.out.println(" ");
                 System.out.println();
 
@@ -174,11 +238,7 @@ public class Aplicacion {
 
     }
 
- 
 
-    private void mostrarIngredientes() throws FileNotFoundException, IOException {
-        
-    }
 
 }
 

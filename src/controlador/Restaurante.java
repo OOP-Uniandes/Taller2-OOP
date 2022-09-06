@@ -61,7 +61,7 @@ public class Restaurante {
     
     public void mostrarIngredientes() {
     	for (Ingrediente ingrediente: this.ingredientes) {
-    		
+    		System.out.println('I' + String.valueOf(this.ingredientes.indexOf(ingrediente)));
 			System.out.println(ingrediente.mostrarIngrediente());
 		}
     }
@@ -88,6 +88,9 @@ public class Restaurante {
     }
     public ProductoMenu retornarProductoPorIndice(int productIndex) {
     	return this.menuBase.get(productIndex);
+    }
+    public Ingrediente retornarIngredientePorIndice(int ingredientIndex) {
+    	return this.ingredientes.get(ingredientIndex);
     }
     
     private int darPrecioCombo(String nombreCombo) {

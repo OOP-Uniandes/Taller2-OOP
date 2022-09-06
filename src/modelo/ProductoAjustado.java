@@ -8,13 +8,21 @@ public class ProductoAjustado implements Producto{
 	private ArrayList<Ingrediente> agregados=new ArrayList<Ingrediente>();
 	private ArrayList<Ingrediente> eliminados=new ArrayList<Ingrediente>();
 	
+	public void addAgregado (Ingrediente agregar) {
+		this.agregados.add(agregar);
+	}
+	
+	public void addEliminado(Ingrediente eliminar) {
+		this.eliminados.add(eliminar);
+	}
+	
 	public ProductoAjustado(ProductoMenu base) {
 		this.base=base;
 	}
 	@Override
 	public double getPrecio() {
 		// TODO Auto-generated method stub
-		return 0;
+		return base.getPrecio();
 	}
 
 	@Override
@@ -26,7 +34,20 @@ public class ProductoAjustado implements Producto{
 	@Override
 	public String generarTextoFactura() {
 		// TODO Auto-generated method stub
-		return null;
+		String agr = "";
+		String elim = "";
+		System.out.println("Size: "+this.agregados.size());
+		for (Ingrediente ingrediente: this.agregados) {
+			System.out.println(ingrediente.getNombre());
+			agr = agr + ingrediente.getNombre() + " ";
+		}
+		for (Ingrediente ingrediente: this.eliminados) {
+			System.out.println(ingrediente.getNombre());
+			
+			elim = elim + ingrediente.getNombre() + " ";
+		}
+		
+		return base.getNombre() + " Sin: " + elim + "Con: " + agr;
 	}
 	
 	@Override

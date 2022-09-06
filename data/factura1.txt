@@ -1,9 +1,10 @@
 Factura del pedido 1
 =====================
-Cliente:   dws
-Direccion: sd
+Cliente:   Miguel
+Direccion: Miguel
 =====================
 Producto: combo corral queso Precio: 15400.000000000002
+corral queso Sin: cebolla Con: tomate 
 =====================
-Total: 15400.000000000002
+Total: 31400.0
 Total Calorias: 0.0
