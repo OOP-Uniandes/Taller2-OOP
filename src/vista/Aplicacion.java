@@ -145,6 +145,7 @@ public class Aplicacion {
         System.out.println("1. Ver lista de Combos");
         System.out.println("2. Ver lista de Ingredientes");
         System.out.println("3. Ver lista de Productos");
+        System.out.println("4. Ver lista de Bebidas");
         System.out.println("");
         int opcionMenu = Integer.parseInt(input("Por favor seleccione una opción: "));
 
@@ -160,6 +161,10 @@ public class Aplicacion {
         else if(opcionMenu == 3) {
         	System.out.println(" ====== LISTA DE PRODUCTOS ======");
             restaurante.mostrarMenu();
+        }
+        else if(opcionMenu == 4) {
+        	System.out.println(" ====== LISTA DE BEBIDAS ======");
+            restaurante.cargarBebidas();
         }
 
     }

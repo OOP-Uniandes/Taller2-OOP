@@ -1,0 +1,9 @@
+Factura del pedido 2
+=====================
+Cliente:   S
+Direccion: S
+=====================
+Producto: gaseosa Precio: 5000.0
+Producto: gaseosa Precio: 5000.0
+=====================
+Total: 10000.0

@@ -1,8 +1,10 @@
 package src.controlador;
 
 import src.modelo.Combo;
+import src.modelo.ProductoAjustado;
 import src.modelo.Ingrediente;
 import src.modelo.Pedido;
+import src.modelo.Bebidas;
 import src.modelo.ProductoMenu;
 
 import java.io.BufferedReader;
@@ -49,6 +51,7 @@ public class Restaurante {
     public ArrayList<Pedido> pedidos=new ArrayList<Pedido>();
     public static ArrayList<Combo> combos= new ArrayList<Combo>();
     public ArrayList<ProductoMenu> menuBase = new ArrayList<ProductoMenu>();
+    public ArrayList<Bebidas> Bebidas = new ArrayList<Bebidas>();
     public int idc = 0;
     
     
@@ -71,7 +74,12 @@ public class Restaurante {
 			System.out.println(combo.mostrarCombo());
 		}
     }
-    
+    public void mostrarBebidas() {
+    	for (Bebidas Bebidas: this.Bebidas) {
+    		System.out.println('B' + String.valueOf(this.Bebidas.indexOf(Bebidas)));
+    		System.out.println(Bebidas.mostrarBebida());
+		}
+    }
     public Combo retornarComboPorIndice(int comboIndex) {
     	return this.combos.get(comboIndex);
     }
@@ -90,7 +98,7 @@ public class Restaurante {
     }
     
     public void cargarCombos() throws FileNotFoundException, IOException  {
-        String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/combos.txt";
+        String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\combos.txt";
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String linea = br.readLine();
 
@@ -109,7 +117,7 @@ public class Restaurante {
     }
     
     public void cargarIngredientes() throws FileNotFoundException, IOException {
-    	String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/ingredientes.txt";
+    	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.txt";
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String linea = br.readLine();
     	
@@ -127,13 +135,11 @@ public class Restaurante {
             linea = br.readLine(); 
         }
         br.close();
-        
-      
         	}
         
 	
 	public void cargarProductos() throws FileNotFoundException, IOException {
-		String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/menu.txt";
+		String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\menu.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String linea = br.readLine();
 		
@@ -152,9 +158,30 @@ public class Restaurante {
 	    
 	  
 	    	}
-	    }
+	    
 
-    
+public void cargarBebidas() throws FileNotFoundException, IOException {
+	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\bebidas.txt";
+	BufferedReader br = new BufferedReader(new FileReader(filename));
+	String linea = br.readLine();
+	
+	
+	while (linea != null) {
+        String[] partes = linea.split(";");
+        String nombre = partes[0];
+        String costo = partes[1];
+        int costoNum = Integer.parseInt(costo);
+
+        Bebidas bebidas = new Bebidas(nombre,costoNum);
+        this.Bebidas.add(bebidas);
+        linea = br.readLine(); 
+        
+	}
+    br.close();
+    mostrarBebidas();
+  
+    	}
+    }
 
 
 

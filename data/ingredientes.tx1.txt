@@ -1,0 +1,8 @@
+Factura del pedido 1
+=====================
+Cliente:   S
+Direccion: S
+=====================
+Producto: corral queso Precio: 16000.0
+=====================
+Total: 16000.0

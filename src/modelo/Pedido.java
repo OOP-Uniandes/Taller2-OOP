@@ -58,7 +58,7 @@ public class Pedido {
 	}
 	
 	public void generarFactura(int idPedido) throws IOException {
-		String filename = "/Users/miguelgomez/repos/DPOO/Taller2-OOP/data/" + String.valueOf(idPedido) +  ".txt";
+		String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.tx" + String.valueOf(idPedido) +  ".txt";
 		File myObj = new File(filename);
 		myObj.createNewFile();
 		FileWriter myWriter = new FileWriter(filename);
