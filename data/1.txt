@@ -1,8 +1,0 @@
-Factura del pedido 1
-=====================
-Cliente:   Miguel
-Direccion: ped1
-=====================
-Producto: combo corral queso Precio: 15400.000000000002
-=====================
-Total: 15400.000000000002

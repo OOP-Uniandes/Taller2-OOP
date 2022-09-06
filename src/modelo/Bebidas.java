@@ -4,9 +4,15 @@ public class Bebidas {
 	private String nombre;
 	private int costoAdicional;
 	private int precio;
+	private int calorias;
 	public Bebidas(String nombre, int precio) {
 		this.nombre=nombre;
 		this.precio=precio;
+	}
+	public Bebidas(String nombre, int precio, int calorias) {
+		this.nombre=nombre;
+		this.precio=precio;
+		this.calorias=calorias;
 	}
 	public String getNombre() {
 		return nombre;
@@ -21,7 +27,7 @@ public class Bebidas {
 		this.precio = precio;
 	}
 	public String mostrarBebida() {
-        String resultado ="Nombre: " + this.nombre + "      Precio : " + this.precio;
+		  String resultado ="Nombre: " + this.nombre + "      Precio : " + this.precio + "       Calorias: " + this.calorias;
         return resultado;
 	}
 }

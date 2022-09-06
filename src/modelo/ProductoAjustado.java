@@ -34,5 +34,10 @@ public class ProductoAjustado implements Producto{
 		// TODO Auto-generated method stub
 		return String.valueOf(this.base.getPrecio()) + this.getPrecio();
 	}
+	@Override
+	public int getCalorias() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

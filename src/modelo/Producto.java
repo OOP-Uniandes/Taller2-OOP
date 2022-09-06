@@ -5,5 +5,6 @@ public interface Producto {
 	public String getNombre();
 	public String generarTextoFactura();
 	public String mostrarProducto();
+	public int getCalorias();
 	
 }

@@ -127,9 +127,10 @@ public class Restaurante {
             String[] partes = linea.split(";");
             String nombre = partes[0];
             String costoAdicional = partes[1];
+            int calorias = Integer.parseInt(partes[2]);
             int costoAdicionalI = Integer.parseInt(costoAdicional);
 
-            Ingrediente ingrediente = new Ingrediente(nombre,costoAdicionalI);
+            Ingrediente ingrediente = new Ingrediente(nombre,costoAdicionalI, calorias);
             
             this.ingredientes.add(ingrediente);
             linea = br.readLine(); 
@@ -148,9 +149,10 @@ public class Restaurante {
 	        String[] partes = linea.split(";");
 	        String nombre = partes[0];
 	        String costo = partes[1];
+	        int calorias = Integer.parseInt(partes[2]);
 	        int costoNum = Integer.parseInt(costo);
 	
-	        ProductoMenu producto = new ProductoMenu(nombre,costoNum);
+	        ProductoMenu producto = new ProductoMenu(nombre,costoNum, calorias);
 	        this.menuBase.add(producto);
 	        linea = br.readLine(); 
 	    }
@@ -170,9 +172,10 @@ public void cargarBebidas() throws FileNotFoundException, IOException {
         String[] partes = linea.split(";");
         String nombre = partes[0];
         String costo = partes[1];
+        int calorias = Integer.parseInt(partes[2]);
         int costoNum = Integer.parseInt(costo);
 
-        Bebidas bebidas = new Bebidas(nombre,costoNum);
+        Bebidas bebidas = new Bebidas(nombre,costoNum, calorias);
         this.Bebidas.add(bebidas);
         linea = br.readLine(); 
         

@@ -59,5 +59,12 @@ public class Combo implements Producto{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public int getCalorias() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

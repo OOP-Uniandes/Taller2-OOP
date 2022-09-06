@@ -1,8 +1,0 @@
-Factura del pedido 2
-=====================
-Cliente:   Miguel
-Direccion: ped2
-=====================
-Producto: combo todoterreno Precio: 26750.0
-=====================
-Total: 26750.0

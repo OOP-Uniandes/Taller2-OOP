@@ -46,6 +46,14 @@ public class Pedido {
 		}
 		return total;
 	}
+	private double calcularCalorias() {
+		double total = 0;
+		for (Producto producto: this.productos) {
+			total += producto.getCalorias();
+		}
+		return total;
+	}
+	
 	
 	public String mostrarInfo() {
 		String info = "Factura del pedido " + String.valueOf(this.idPedido + 1) + "\n" + "=====================" + "\n" +"Cliente:   " + this.nombreCliente + "\n" + "Direccion: " + this.direccionCliente + "\n"+ "=====================" + "\n" ;
@@ -54,6 +62,7 @@ public class Pedido {
 			info = info + elem + "\n";
 		}
 		info = info + "=====================" + "\n" +"Total: " + String.valueOf(this.calcularTotal()) + "\n";
+		info = info + "Total Calorias: " + String.valueOf(this.calcularCalorias()) + "\n";
 		return info;
 	}
 	
@@ -73,6 +82,7 @@ public class Pedido {
 		}
 		myWriter.write("=====================" + "\n");
 		myWriter.write("Total: " + String.valueOf(this.calcularTotal()) + "\n");
+		myWriter.write("Total Calorias: " + String.valueOf(this.calcularCalorias()) + "\n");
 		myWriter.close();
 	}
 	

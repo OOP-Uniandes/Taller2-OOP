@@ -1,8 +1,10 @@
 Factura del pedido 1
 =====================
-Cliente:   S
-Direccion: S
+Cliente:   samuel
+Direccion: santa
 =====================
 Producto: corral queso Precio: 16000.0
+Producto: corral pollo Precio: 15000.0
 =====================
-Total: 16000.0
+Total: 31000.0
+Total Calorias: 3500.0
