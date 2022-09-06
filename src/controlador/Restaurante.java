@@ -4,6 +4,7 @@ import src.modelo.Combo;
 import src.modelo.ProductoAjustado;
 import src.modelo.Ingrediente;
 import src.modelo.Pedido;
+import src.modelo.Producto;
 import src.modelo.Bebidas;
 import src.modelo.ProductoMenu;
 
@@ -12,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.io.BufferedReader;
 
 public class Restaurante {
@@ -98,7 +101,7 @@ public class Restaurante {
     }
     
     public void cargarCombos() throws FileNotFoundException, IOException  {
-        String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\combos.txt";
+        String filename = "data/combos.txt";
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String linea = br.readLine();
 
@@ -117,7 +120,7 @@ public class Restaurante {
     }
     
     public void cargarIngredientes() throws FileNotFoundException, IOException {
-    	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.txt";
+    	String filename = "data/ingredientes.txt";
     	BufferedReader br = new BufferedReader(new FileReader(filename));
     	String linea = br.readLine();
     	
@@ -140,7 +143,7 @@ public class Restaurante {
         
 	
 	public void cargarProductos() throws FileNotFoundException, IOException {
-		String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\menu.txt";
+		String filename = "data/menu.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String linea = br.readLine();
 		
@@ -162,28 +165,56 @@ public class Restaurante {
 	    	}
 	    
 
-public void cargarBebidas() throws FileNotFoundException, IOException {
-	String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\bebidas.txt";
-	BufferedReader br = new BufferedReader(new FileReader(filename));
-	String linea = br.readLine();
+	public void cargarBebidas() throws FileNotFoundException, IOException {
+		String filename = "data/bebidas.txt";
+		BufferedReader br = new BufferedReader(new FileReader(filename));
+		String linea = br.readLine();
+		
+		
+		while (linea != null) {
+	        String[] partes = linea.split(";");
+	        String nombre = partes[0];
+	        String costo = partes[1];
+	        int calorias = Integer.parseInt(partes[2]);
+	        int costoNum = Integer.parseInt(costo);
 	
+	        Bebidas bebidas = new Bebidas(nombre,costoNum, calorias);
+	        this.Bebidas.add(bebidas);
+	        linea = br.readLine(); 
+	        
+		}
+	    br.close();
+	    mostrarBebidas();
+	  
+	    	}
 	
-	while (linea != null) {
-        String[] partes = linea.split(";");
-        String nombre = partes[0];
-        String costo = partes[1];
-        int calorias = Integer.parseInt(partes[2]);
-        int costoNum = Integer.parseInt(costo);
+	public boolean revisarPedidoDuplicado() {
+		
+		int numDuplicados[];
+		
+		for (Pedido pedido1: this.pedidos) {
+			for(Pedido pedido2: this.pedidos) {
+				
+				ArrayList<String> pedido1_list = pedido1.getProductosList();
+				ArrayList<String> pedido2_list = pedido2.getProductosList();
+				
+				Arrays.sort(pedido1_list.toArray(), Collections.reverseOrder());
+			    Arrays.sort(pedido2_list.toArray(), Collections.reverseOrder());
+			    if (pedido1.getIdPedido() != pedido2.getIdPedido()) {
+				    if (pedido1_list.equals(pedido2_list)) {
+				    	System.out.println("Pedido: " + String.valueOf(pedido1.getIdPedido()) + " Es igual a: "+ String.valueOf(pedido2.getIdPedido()));
+		
+				    	continue;
+				    }
+			    }
+			    
 
-        Bebidas bebidas = new Bebidas(nombre,costoNum, calorias);
-        this.Bebidas.add(bebidas);
-        linea = br.readLine(); 
-        
+			}
+		}
+		return false;
 	}
-    br.close();
-    mostrarBebidas();
-  
-    	}
+	
+	
     }
 
 

@@ -21,6 +21,13 @@ public class Pedido {
 	public void addProducto(Producto producto) {
 		this.productos.add(producto);
 		}
+	public ArrayList<String> getProductosList() {
+		ArrayList<String> productosList = new ArrayList<String>();
+		for(Producto producto: this.productos) {
+			productosList.add(producto.getNombre()); 
+		}
+		return productosList;
+	}
 	public int getIdPedido() {
 		return idPedido;
 	}
@@ -67,7 +74,7 @@ public class Pedido {
 	}
 	
 	public void generarFactura(int idPedido) throws IOException {
-		String filename = "C:\\Users\\samue\\OneDrive\\Universidad\\3. Semestre\\OOP\\Talleres\\Taller 2\\Taller2-OOP\\data\\ingredientes.tx" + String.valueOf(idPedido) +  ".txt";
+		String filename = "data/factura" + String.valueOf(idPedido) +  ".txt";
 		File myObj = new File(filename);
 		myObj.createNewFile();
 		FileWriter myWriter = new FileWriter(filename);

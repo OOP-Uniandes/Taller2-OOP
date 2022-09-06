@@ -1,0 +1,9 @@
+Factura del pedido 1
+=====================
+Cliente:   dws
+Direccion: sd
+=====================
+Producto: combo corral queso Precio: 15400.000000000002
+=====================
+Total: 15400.000000000002
+Total Calorias: 0.0

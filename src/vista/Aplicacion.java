@@ -73,6 +73,7 @@ public class Aplicacion {
                 System.out.println("1. Inicia un nuevo pedido");
                 System.out.println("2. Buscar pedido");
                 System.out.println("3. Revisa nuestro menú");
+                System.out.println("4. Verificar pedidos repetidos");
                 System.out.println(" ");
                 System.out.println();
 
@@ -105,6 +106,10 @@ public class Aplicacion {
     				else if (opcion_seleccionada == 3) {
     					mostrarMenu();
                 }
+    				else if (opcion_seleccionada == 4) {
+    					restaurante.revisarPedidoDuplicado();
+    					
+    				}
     				
     			else if (opcion_seleccionada == 0) {
     				
